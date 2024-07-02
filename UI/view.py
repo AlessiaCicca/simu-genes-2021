@@ -8,7 +8,7 @@ class View(ft.UserControl):
         self._page = page
         self._page.title = "Template application using MVC and DAO"
         self._page.horizontal_alignment = 'CENTER'
-        self._page.theme_mode = ft.ThemeMode.DARK
+        self._page.theme_mode = ft.ThemeMode.LIGHT
         # controller (it is not initialized. Must be initialized in the main, after the controller is created)
         self._controller = None
         # graphical elements
@@ -20,20 +20,21 @@ class View(ft.UserControl):
 
     def load_interface(self):
         # title
-        self._title = ft.Text("Hello World", color="blue", size=24)
+        self._title = ft.Text("Simulazione d'esame 01/06/21", color="blue", size=24)
         self._page.controls.append(self._title)
 
         #ROW with some controls
         # text field for the name
-        self.txt_name = ft.TextField(
-            label="name",
+        self.txt_ingegneri = ft.TextField(
+            label="Ingegneri",
             width=200,
-            hint_text="Insert a your name"
         )
+        self.dd_gene=ft.Dropdown(label="Gene")
 
         # button for the "hello" reply
-        self.btn_hello = ft.ElevatedButton(text="Hello", on_click=self._controller.handle_hello)
-        row1 = ft.Row([self.txt_name, self.btn_hello],
+        self.btn_grafo = ft.ElevatedButton(text="Crea Grafo", on_click=self._controller.handle_grafo)
+        self.btn_adiacenti = ft.ElevatedButton(text="Geni Adiacenti", on_click=self._controller.handle_adiacenti)
+        row1 = ft.Row([self.txt_ingegneri,self.dd_gene,self.btn_grafo, self.btn_adiacenti],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
 
